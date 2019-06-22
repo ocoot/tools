@@ -57,9 +57,15 @@ export KBUILD_COMPILER_STRING="$(${CLANG_TCHAIN} --version | head -n 1 | perl -p
 
 #COMPILATION SCRIPTS
 echo -e "$green"
-echo "--------------------------------------------------------"
-echo "      Initializing build to compile Ver: $KERNEL_CODE    "
-echo "--------------------------------------------------------"
+echo "-------------------------------------------------------------"
+echo "      Initializing build to compile Version: $KERNEL_CODE    "
+echo "-------------------------------------------------------------"
+
+
+echo -e "$blink_red***********************************************"
+echo "          Removed previous zip file        "
+echo -e "***********************************************$nocol"
+rm $ZIP_FOLDER/*.zip
 
 
 echo -e "$blink_red***********************************************"
@@ -95,6 +101,7 @@ rm *.zip
 cd $KERNEL_DIR
 rm AnyKernel3/Image.gz-dtb
 mv $OUT/*.zip $ZIP_FOLDER/
+
 
 BUILD_END=$(date +"%s")
 DIFF=$(($BUILD_END - $BUILD_START))
