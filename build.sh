@@ -42,20 +42,24 @@ KERNEL_DIR=$PWD
 ZIP_FOLDER=build
 REPACK_DIR=$KERNEL_DIR/AnyKernel3
 OUT=$KERNEL_DIR/out
-VERSION=`date +"%Y%m%d"`
-KERNEL_CODE="DELTA"
-export ARCH=arm64 && export SUBARCH=arm64
+export ARCH=arm64
+export SUBARCH=arm64
+
+# Compiler machnine
 export CROSS_COMPILE="/home/octo/Kernel/aarch64-linux-gnu/bin/aarch64-linux-gnu-"
-
-
-# Tweakable Stuff
-export KBUILD_BUILD_USER="ExGurita"
-export KBUILD_BUILD_HOST="LineageOS"
 export CLANG_TCHAIN="/home/octo/Kernel/clang-5484270/bin/clang"
+
+# Make your kernel string more sexier
 export KBUILD_COMPILER_STRING="$(${CLANG_TCHAIN} --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g')"
 
+# Tweakable Stuff ( user@host blablabla )
+export KBUILD_BUILD_USER="ExGurita"
+export KBUILD_BUILD_HOST="LineageOS"
+KERNEL_CODE="DELTA"
+VERSION=`date +"%Y%m%d"`
 
-#COMPILATION SCRIPTS
+# Compiling begin here
+
 echo -e "$green"
 echo "-------------------------------------------------------------"
 echo "      Initializing build to compile Version: $KERNEL_CODE    "
