@@ -60,6 +60,7 @@ echo -e "$green"
 echo "-------------------------------------------------------------"
 echo "      Initializing build to compile Version: $KERNEL_CODE    "
 echo "-------------------------------------------------------------"
+mkdir build/
 
 
 echo -e "$blink_red***********************************************"
