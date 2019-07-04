@@ -45,10 +45,6 @@ OUT=$KERNEL_DIR/out
 export ARCH=arm64
 export SUBARCH=arm64
 
-# Compiler machnine
-export CROSS_COMPILE="/home/octo/Kernel/aarch64-linux-gnu/bin/aarch64-linux-gnu-"
-export CLANG_TCHAIN="/home/octo/Kernel/clang-5484270/bin/clang"
-
 # Make your kernel string more sexier
 export KBUILD_COMPILER_STRING="$(${CLANG_TCHAIN} --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g')"
 
@@ -78,6 +74,7 @@ echo -e "***********************************************$nocol"
 make O=out mido_defconfig
 
 
+# Tweakable stuff
 echo -e "$blink_red***********************************************"
 echo "          Compiling Kernel        "
 echo -e "***********************************************$nocol"
