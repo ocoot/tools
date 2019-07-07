@@ -45,14 +45,17 @@ OUT=$KERNEL_DIR/out
 export ARCH=arm64
 export SUBARCH=arm64
 
-# Make your kernel string more sexier
-export KBUILD_COMPILER_STRING="$(${CLANG_TCHAIN} --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g')"
-
 # Tweakable Stuff ( user@host blablabla )
+# export CROSS_COMPILE_ARM32="/home/octo/Kernel/arm-eabi-gcc/bin/arm-eabi-"
+export CROSS_COMPILE="/home/octo/Kernel/aarch64-linux-gnu/bin/aarch64-linux-gnu-"
+export CLANG_TCHAIN="/home/octo/Kernel/clang-5484270/bin/clang"
 export KBUILD_BUILD_USER="ExGurita"
 export KBUILD_BUILD_HOST="LineageOS"
 KERNEL_CODE="DELTA"
 VERSION=`date +"%Y%m%d"`
+
+# Make your kernel string more sexier
+export KBUILD_COMPILER_STRING="$(${CLANG_TCHAIN} --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g')"
 
 # Compiling begin here
 
@@ -82,6 +85,7 @@ echo -e "***********************************************$nocol"
 make -j$(nproc --all) O=out ARCH=arm64 \
                       CC="/home/octo/Kernel/clang-5484270/bin/clang" \
                       CLANG_TRIPLE="aarch64-linux-gnu-" \
+                      # export CROSS_COMPILE_ARM32="/home/octo/Kernel/arm-eabi-gcc/bin/arm-eabi-" \
                       CROSS_COMPILE="/home/octo/Kernel/aarch64-linux-gnu/bin/aarch64-linux-gnu-"
 
 
