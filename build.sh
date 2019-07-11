@@ -85,7 +85,7 @@ echo -e "***********************************************$nocol"
 make -j$(nproc --all) O=out ARCH=arm64 \
                       CC="/home/octo/Kernel/clang-5484270/bin/clang" \
                       CLANG_TRIPLE="aarch64-linux-gnu-" \
-                      # export CROSS_COMPILE_ARM32="/home/octo/Kernel/arm-eabi-gcc/bin/arm-eabi-" \
+                      # CROSS_COMPILE_ARM32="/home/octo/Kernel/arm-eabi-gcc/bin/arm-eabi-" \
                       CROSS_COMPILE="/home/octo/Kernel/aarch64-linux-gnu/bin/aarch64-linux-gnu-"
 
 
